@@ -22,7 +22,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence,
             'body' => $this->faker->text,
             'image' => $this->faker->imageUrl(width: 480, height: 320, category: 'post', randomize: true, word: 'post', format: 'jpg'),
-            'user_id' => User::factory(),
+            'user_id' => User::where('name', 'Admin')->first()->id,
             'category_id' => Category::factory(),
         ];
     }
