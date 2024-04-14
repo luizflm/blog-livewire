@@ -18,6 +18,11 @@ class LoginForm extends Form
     {
         $this->validate();
 
-        return Auth::attempt($this->all());
+        if (Auth::attempt($this->all())) {
+            request()->session()->regenerate();
+            return true;
+        }
+
+        return false;
     }
 }
